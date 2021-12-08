@@ -73,8 +73,10 @@ const createWindow = async () => {
 
   mainWindow = new BrowserWindow({
     show: false,
-    width: 1024,
-    height: 728,
+    width: 1000,
+    height: 680,
+    minWidth: 1000,
+    minHeight: 700,
     icon: getAssetPath('icon.png'),
     frame: false,
     webPreferences: {
@@ -96,6 +98,10 @@ const createWindow = async () => {
       mainWindow.show();
     }
   });
+
+  if (isDevelopment) {
+    mainWindow.webContents.openDevTools({ mode: 'detach' });
+  }
 
   mainWindow.on('closed', () => {
     mainWindow = null;
