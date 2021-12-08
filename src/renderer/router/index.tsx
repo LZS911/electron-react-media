@@ -1,5 +1,10 @@
 import { Suspense } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Redirect,
+  Route,
+  Switch,
+} from 'react-router-dom';
 import routers from './router.config';
 
 export default function RouterComponent() {
@@ -21,6 +26,7 @@ export default function RouterComponent() {
               }
               return null;
             })}
+            <Route render={() => <Redirect to="/" />} />
           </Switch>
         </Suspense>
       </Router>

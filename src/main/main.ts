@@ -27,6 +27,29 @@ export default class AppUpdater {
 
 let mainWindow: BrowserWindow | null = null;
 
+ipcMain.on('router-go-back', (event, arg) => {
+  console.log(mainWindow, '------------');
+  if (!mainWindow) {
+    throw new Error('"mainWindow" is not defined');
+  }
+  mainWindow.webContents.goBack();
+  event.sender.send('can-go-back', {
+    back: mainWindow.webContents.canGoBack(),
+    forward: mainWindow.webContents.canGoForward(),
+  });
+});
+
+ipcMain.on('router-go-forward', (event, arg) => {
+  if (!mainWindow) {
+    throw new Error('"mainWindow" is not defined');
+  }
+  mainWindow.webContents.goForward();
+  event.sender.send('can-go-forward', {
+    back: mainWindow.webContents.canGoBack(),
+    forward: mainWindow.webContents.canGoForward(),
+  });
+});
+
 ipcMain.on('ipc-example', async (event, arg) => {
   const msgTemplate = (pingPong: string) => `IPC test: ${pingPong}`;
   console.log(msgTemplate(arg));
@@ -78,7 +101,7 @@ const createWindow = async () => {
     minWidth: 1000,
     minHeight: 700,
     icon: getAssetPath('icon.png'),
-    frame: false,
+    titleBarStyle: 'hidden',
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: true,
@@ -144,3 +167,5 @@ app
     });
   })
   .catch(console.log);
+
+export { mainWindow };
