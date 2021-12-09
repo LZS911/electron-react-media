@@ -16,7 +16,7 @@ const routers: IMenuDataItem[] = [
   {
     path: '/music',
     name: 'music',
-    component: React.lazy(() => import('../pages/music')),
+    component: React.lazy(() => import('../pages/Music')),
   },
 ];
 
