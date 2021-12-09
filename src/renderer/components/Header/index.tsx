@@ -1,41 +1,56 @@
-const { ipcRenderer } = window.electronAPI;
 import React from 'react';
-import { useHistory } from 'react-router';
 import { HeaderWrapper } from './style';
+import { classnames } from '../../utils';
+
+const { ipcRenderer } = window.electronAPI;
 
 const HeaderComponent: React.FC = () => {
-  const [data, setData] = React.useState({ back: true, forward: false });
-
+  const [isSwitchRouter, setIsSwitchRouter] = React.useState({
+    back: false,
+    forward: false,
+  });
   const back = () => {
-    !!data.back && ipcRenderer.goBack(setData);
+    ipcRenderer.goBack(setIsSwitchRouter);
   };
   const forward = () => {
-    !!data.forward && ipcRenderer.goForward(setData);
+    ipcRenderer.goForward(setIsSwitchRouter);
   };
 
-  const history = useHistory();
-
-  const jump = () => {
-    history.location.pathname !== '/video' && history.push('/video');
-  };
-
-  React.useEffect(() => {
-    console.log(data);
-  }, [data.forward, data.back]);
   return (
     <HeaderWrapper>
       <div className="left">
-        <div className="arrow-wrapper">
-          <div className="left-wrapper" onClick={back}>
-            <div className="arrow arrow-left"></div>
+        <div className="arrow-content">
+          <div
+            className={classnames(
+              ['arrow-wrapper', 'left-wrapper', 'disabled-wrapper'],
+              [true, true, !isSwitchRouter.back]
+            )}
+            onClick={back}
+          >
+            <div
+              className={classnames(
+                ['arrow', 'arrow-left', 'disabled-arrow'],
+                [true, true, !isSwitchRouter.back]
+              )}
+            />
           </div>
-          <div className="right-wrapper" onClick={forward}>
-            <div className="arrow arrow-right"></div>
+          <div
+            className={classnames(
+              ['arrow-wrapper', 'right-wrapper', 'disabled-wrapper'],
+              [true, true, !isSwitchRouter.forward]
+            )}
+            onClick={forward}
+          >
+            <div
+              className={classnames(
+                ['arrow', 'arrow-right', 'disabled-arrow'],
+                [true, true, !isSwitchRouter.forward]
+              )}
+            />
           </div>
         </div>
       </div>
-      <div className="right"></div>
-      <button onClick={jump}>跳转</button>
+      <div className="right" />
     </HeaderWrapper>
   );
 };

@@ -10,6 +10,7 @@ const Home: React.FC = () => {
   const musicModel = () => {
     history.push('/music');
   };
+
   return (
     <HomeWrapper>
       <div className="home-content">

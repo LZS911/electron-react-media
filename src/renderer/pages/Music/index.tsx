@@ -1,13 +1,17 @@
 import React from 'react';
-import { useHistory } from 'react-router';
-import { HeaderComponent } from '../../components';
+import { useHistory, useLocation } from 'react-router';
 
 const MusicComponent: React.FC = () => {
   const history = useHistory();
+  const back = () => {
+    history.push('/video');
+  };
   return (
     <>
-      <HeaderComponent />
       <h1>Music</h1>
+      <button type="button" onClick={back}>
+        {'<'}
+      </button>
     </>
   );
 };

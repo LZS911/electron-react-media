@@ -16,6 +16,7 @@ import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
 import MenuBuilder from './menu';
 import { resolveHtmlPath } from './util';
+import initIpcMain from './ipcMain';
 
 export default class AppUpdater {
   constructor() {
@@ -27,34 +28,28 @@ export default class AppUpdater {
 
 let mainWindow: BrowserWindow | null = null;
 
-ipcMain.on('router-go-back', (event, arg) => {
-  console.log(mainWindow, '------------');
-  if (!mainWindow) {
-    throw new Error('"mainWindow" is not defined');
-  }
-  mainWindow.webContents.goBack();
-  event.sender.send('can-go-back', {
-    back: mainWindow.webContents.canGoBack(),
-    forward: mainWindow.webContents.canGoForward(),
-  });
-});
+// ipcMain.on('router-go-back', (event, arg) => {
+//   console.log(mainWindow, '------------');
+//   if (!mainWindow) {
+//     throw new Error('"mainWindow" is not defined');
+//   }
+//   mainWindow.webContents.goBack();
+//   event.sender.send('can-go-back', {
+//     back: mainWindow.webContents.canGoBack(),
+//     forward: mainWindow.webContents.canGoForward(),
+//   });
+// });
 
-ipcMain.on('router-go-forward', (event, arg) => {
-  if (!mainWindow) {
-    throw new Error('"mainWindow" is not defined');
-  }
-  mainWindow.webContents.goForward();
-  event.sender.send('can-go-forward', {
-    back: mainWindow.webContents.canGoBack(),
-    forward: mainWindow.webContents.canGoForward(),
-  });
-});
-
-ipcMain.on('ipc-example', async (event, arg) => {
-  const msgTemplate = (pingPong: string) => `IPC test: ${pingPong}`;
-  console.log(msgTemplate(arg));
-  event.reply('ipc-example', msgTemplate('pong'));
-});
+// ipcMain.on('router-go-forward', (event, arg) => {
+//   if (!mainWindow) {
+//     throw new Error('"mainWindow" is not defined');
+//   }
+//   mainWindow.webContents.goForward();
+//   event.sender.send('can-go-forward', {
+//     back: mainWindow.webContents.canGoBack(),
+//     forward: mainWindow.webContents.canGoForward(),
+//   });
+// });
 
 if (process.env.NODE_ENV === 'production') {
   const sourceMapSupport = require('source-map-support');
@@ -120,6 +115,8 @@ const createWindow = async () => {
     } else {
       mainWindow.show();
     }
+
+    initIpcMain(mainWindow);
   });
 
   if (isDevelopment) {

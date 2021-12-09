@@ -7,6 +7,11 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     'jsx-a11y/no-static-element-interactions': 'off',
     'jsx-a11y/click-events-have-key-events': 'off',
+    'react-hooks/exhaustive-deps': 'warn',
+    '@typescript-eslint/no-unused-expressions': 'off',
+    'react/button-has-type': 'off',
+    'import/prefer-default-export': 'off',
+    'no-sparse-arrays': 'off',
   },
   parserOptions: {
     ecmaVersion: 2020,
