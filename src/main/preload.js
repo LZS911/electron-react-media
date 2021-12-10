@@ -2,15 +2,15 @@ const { contextBridge, ipcRenderer } = require('electron');
 
 contextBridge.exposeInMainWorld('electronAPI', {
   ipcRenderer: {
-    async goBack(func) {
+    async goBack() {
       ipcRenderer.send('goBack');
-      ipcRenderer.on('canGoBack', (event, data) => {
-        func(data);
-      });
     },
-    async goForward(func) {
+    async goForward() {
       ipcRenderer.send('goForward');
-      ipcRenderer.on('canGoForward', (event, data) => {
+    },
+    async canGoBackOrForward(func) {
+      ipcRenderer.send('canGoBackOrForward');
+      ipcRenderer.on('canGoResult', (event, data) => {
         func(data);
       });
     },

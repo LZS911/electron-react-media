@@ -1,10 +1,10 @@
 import { BrowserWindow, ipcMain } from 'electron';
 
 export default function initIpcMain(win: BrowserWindow) {
+  if (!win) {
+    throw new Error('"mainWindow" is not defined');
+  }
   ipcMain.on('goBack', (event) => {
-    if (!win) {
-      throw new Error('"mainWindow" is not defined');
-    }
     win.webContents.goBack();
     event.sender.send('canGoBack', {
       back: win.webContents.canGoBack(),
@@ -13,11 +13,15 @@ export default function initIpcMain(win: BrowserWindow) {
   });
 
   ipcMain.on('goForward', (event) => {
-    if (!win) {
-      throw new Error('"mainWindow" is not defined');
-    }
     win.webContents.goForward();
     event.sender.send('canGoForward', {
+      back: win.webContents.canGoBack(),
+      forward: win.webContents.canGoForward(),
+    });
+  });
+
+  ipcMain.on('canGoBackOrForward', (event) => {
+    event.sender.send('canGoResult', {
       back: win.webContents.canGoBack(),
       forward: win.webContents.canGoForward(),
     });

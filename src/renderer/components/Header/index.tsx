@@ -1,4 +1,5 @@
 import React from 'react';
+import { useLocation } from 'react-router';
 import { HeaderWrapper } from './style';
 import { classnames } from '../../utils';
 
@@ -9,11 +10,17 @@ const HeaderComponent: React.FC = () => {
     back: false,
     forward: false,
   });
+
+  const location = useLocation();
+  React.useEffect(() => {
+    ipcRenderer.canGoBackOrForward(setIsSwitchRouter);
+  }, [location]);
+
   const back = () => {
-    ipcRenderer.goBack(setIsSwitchRouter);
+    isSwitchRouter.back && ipcRenderer.goBack();
   };
   const forward = () => {
-    ipcRenderer.goForward(setIsSwitchRouter);
+    isSwitchRouter.forward && ipcRenderer.goForward();
   };
 
   return (
