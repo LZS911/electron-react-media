@@ -1,13 +1,14 @@
 import React from 'react';
-import { HeaderComponent } from '../../components';
+import { useLocation } from 'react-router';
+
+const { ipcRenderer } = window.electronAPI;
 
 const Container: React.FC = ({ children }) => {
-  return (
-    <>
-      <HeaderComponent />
-      {children}
-    </>
-  );
+  const { pathname } = useLocation();
+  React.useEffect(() => {
+    console.log(pathname);
+  }, [pathname]);
+  return <>{children}</>;
 };
 
 export default Container;

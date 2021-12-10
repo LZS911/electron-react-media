@@ -25,39 +25,36 @@ const HeaderComponent: React.FC = () => {
 
   return (
     <HeaderWrapper>
-      <div className="left">
-        <div className="arrow-content">
+      <div className="arrow-content">
+        <div
+          className={classnames(
+            ['arrow-wrapper', 'left-wrapper', 'disabled-wrapper'],
+            [true, true, !isSwitchRouter.back]
+          )}
+          onClick={back}
+        >
           <div
             className={classnames(
-              ['arrow-wrapper', 'left-wrapper', 'disabled-wrapper'],
+              ['arrow', 'arrow-left', 'disabled-arrow'],
               [true, true, !isSwitchRouter.back]
             )}
-            onClick={back}
-          >
-            <div
-              className={classnames(
-                ['arrow', 'arrow-left', 'disabled-arrow'],
-                [true, true, !isSwitchRouter.back]
-              )}
-            />
-          </div>
+          />
+        </div>
+        <div
+          className={classnames(
+            ['arrow-wrapper', 'right-wrapper', 'disabled-wrapper'],
+            [true, true, !isSwitchRouter.forward]
+          )}
+          onClick={forward}
+        >
           <div
             className={classnames(
-              ['arrow-wrapper', 'right-wrapper', 'disabled-wrapper'],
+              ['arrow', 'arrow-right', 'disabled-arrow'],
               [true, true, !isSwitchRouter.forward]
             )}
-            onClick={forward}
-          >
-            <div
-              className={classnames(
-                ['arrow', 'arrow-right', 'disabled-arrow'],
-                [true, true, !isSwitchRouter.forward]
-              )}
-            />
-          </div>
+          />
         </div>
       </div>
-      <div className="right" />
     </HeaderWrapper>
   );
 };

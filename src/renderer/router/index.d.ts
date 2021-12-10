@@ -4,3 +4,7 @@ export interface IMenuDataItem {
   component: React.LazyExoticComponent<any>;
   exact?: boolean;
 }
+
+export interface IRouterComponentProps {
+  routers: IMenuDataItem[];
+}
