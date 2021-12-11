@@ -3,11 +3,6 @@ import { IMenuDataItem } from './index.d';
 
 const routers: IMenuDataItem[] = [
   {
-    path: '/discoverMusic',
-    name: 'discoverMusic',
-    component: React.lazy(() => import('../pages/DiscoverMusic')),
-  },
-  {
     path: '/recommendation',
     name: 'recommendation',
     component: React.lazy(

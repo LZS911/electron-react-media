@@ -229,7 +229,9 @@
     "webpack-bundle-analyzer": "^4.5.0",
     "webpack-cli": "^4.9.1",
     "webpack-dev-server": "^4.4.0",
-    "webpack-merge": "^5.8.0"
+    "webpack-merge": "^5.8.0",
+    "@types/react-redux": "^7.1.18",
+    "@types/redux-actions": "^2.6.2"
   },
   "dependencies": {
     "electron-debug": "^3.2.0",
@@ -240,7 +242,10 @@
     "react-dom": "^17.0.2",
     "react-router-dom": "^5.3.0",
     "regenerator-runtime": "^0.13.9",
-    "styled-components": "^5.3.3"
+    "styled-components": "^5.3.3",
+    "redux-actions": "^2.6.2",
+    "react-redux": "^7.2.4",
+    "immutable": "^4.0.0-rc.14"
   },
   "devEngines": {
     "node": ">=14.x",

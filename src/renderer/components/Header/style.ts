@@ -13,7 +13,7 @@ export const HeaderWrapper = styled.header`
   height: 50px;
   display: flex;
   -webkit-app-region: drag;
-  .left {
+  .control {
     background-color: #f5f5f5;
     height: 100%;
     flex-basis: 200px;
@@ -64,7 +64,7 @@ export const HeaderWrapper = styled.header`
       opacity: 0.3;
     }
   }
-  .right {
+  .nav {
     background-color: #f8f8f8;
     height: 100%;
     flex: 1;

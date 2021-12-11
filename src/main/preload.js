@@ -11,7 +11,6 @@ contextBridge.exposeInMainWorld('electronAPI', {
     async canGoBackOrForward(func) {
       ipcRenderer.send('canGoBackOrForward');
       ipcRenderer.once('canGoResult', (event, data) => {
-        console.log('123432');
         func(data);
       });
     },

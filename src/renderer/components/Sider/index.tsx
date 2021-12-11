@@ -1,5 +1,7 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { hederNavActions } from '../../store/action/headerNav';
 
 const list = [
   {
@@ -13,11 +15,19 @@ const list = [
 ];
 
 const MusicSider: React.FC = () => {
+  const dispatch = useDispatch();
+  const changeCurrentMenu = (path: string) => {
+    dispatch(hederNavActions.setCurrentMenu(path.replace('/', '')));
+  };
   return (
     <>
       {list.map((v) => {
         return (
-          <Link key={v.path} to={v.path}>
+          <Link
+            key={v.path}
+            to={v.path}
+            onClick={() => changeCurrentMenu(v.path)}
+          >
             {v.label}
           </Link>
         );

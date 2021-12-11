@@ -35,7 +35,7 @@ export default function RouterComponent() {
                   }
                   return null;
                 })}
-                <Route render={() => <Redirect to="/discoverMusic" />} />
+                <Route render={() => <Redirect to="/recommendation" />} />
               </Switch>
             </Suspense>
           )}
