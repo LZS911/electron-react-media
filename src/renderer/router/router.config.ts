@@ -3,20 +3,28 @@ import { IMenuDataItem } from './index.d';
 
 const routers: IMenuDataItem[] = [
   {
-    path: '/',
-    name: 'home',
-    exact: true,
-    component: React.lazy(() => import('../pages/Home')),
+    path: '/discoverMusic',
+    name: 'discoverMusic',
+    component: React.lazy(() => import('../pages/DiscoverMusic')),
   },
   {
-    path: '/video',
-    name: 'video',
-    component: React.lazy(() => import('../pages/Video')),
+    path: '/recommendation',
+    name: 'recommendation',
+    component: React.lazy(
+      () => import('../pages/DiscoverMusic/components/Recommendation')
+    ),
   },
   {
-    path: '/music',
-    name: 'music',
-    component: React.lazy(() => import('../pages/Music')),
+    path: '/songList',
+    name: 'songList',
+    component: React.lazy(
+      () => import('../pages/DiscoverMusic/components/SongList')
+    ),
+  },
+  {
+    path: '/privateFM',
+    name: 'privateFM',
+    component: React.lazy(() => import('../pages/PrivateFM')),
   },
 ];
 

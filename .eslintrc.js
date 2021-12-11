@@ -14,6 +14,7 @@ module.exports = {
     'no-sparse-arrays': 'off',
     'react/jsx-props-no-spreading': 'off',
     'react/prop-types': 'off',
+    'import/no-cycle': 'off',
   },
   parserOptions: {
     ecmaVersion: 2020,

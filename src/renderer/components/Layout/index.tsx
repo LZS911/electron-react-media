@@ -3,6 +3,7 @@ import { ILayoutProps } from './index.d';
 import { LayoutWrapper } from './style';
 
 const Layout: React.FC<ILayoutProps> = ({
+  Header,
   Sider,
   Content,
   footerHeight = 60,
@@ -10,11 +11,16 @@ const Layout: React.FC<ILayoutProps> = ({
   return (
     <>
       <LayoutWrapper footerHeight={footerHeight}>
-        <div className="sider">
-          <Sider />
+        <div className="header">
+          <Header />
         </div>
-        <div className="content">
-          <Content />
+        <div className="wrapper">
+          <div className="sider">
+            <Sider />
+          </div>
+          <div className="content">
+            <Content />
+          </div>
         </div>
       </LayoutWrapper>
     </>

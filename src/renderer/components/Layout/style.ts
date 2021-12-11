@@ -4,12 +4,18 @@ import { ILayoutWrapper } from './index.d';
 export const LayoutWrapper = styled.div<ILayoutWrapper>`
   width: 100%;
   height: ${(props) => `calc(100% - ${props.footerHeight}px)`};
-  display: flex;
-  .sider {
-    background-color: #ededed;
-    flex-basis: 200px;
+  .header {
+    width: 100%;
   }
-  .content {
-    flex: 1;
+  .wrapper {
+    height: 100%;
+    display: flex;
+    .sider {
+      background-color: #ededed;
+      flex-basis: 200px;
+    }
+    .content {
+      flex: 1;
+    }
   }
 `;

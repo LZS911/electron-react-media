@@ -2,8 +2,14 @@ import React from 'react';
 import { useLocation } from 'react-router';
 import { HeaderWrapper } from './style';
 import { classnames } from '../../utils';
+import { TabsComponent } from '..';
+import { ITabsList } from '../Tabs/index.d';
 
 const { ipcRenderer } = window.electronAPI;
+const list: ITabsList[] = [
+  { path: '/recommendation', label: '个性推荐' },
+  { path: '/songList', label: '歌单' },
+];
 
 const HeaderComponent: React.FC = () => {
   const [isSwitchRouter, setIsSwitchRouter] = React.useState({
@@ -25,35 +31,40 @@ const HeaderComponent: React.FC = () => {
 
   return (
     <HeaderWrapper>
-      <div className="arrow-content">
-        <div
-          className={classnames(
-            ['arrow-wrapper', 'left-wrapper', 'disabled-wrapper'],
-            [true, true, !isSwitchRouter.back]
-          )}
-          onClick={back}
-        >
+      <div className="left">
+        <div className="arrow-content">
           <div
             className={classnames(
-              ['arrow', 'arrow-left', 'disabled-arrow'],
+              ['arrow-wrapper', 'left-wrapper', 'disabled-wrapper'],
               [true, true, !isSwitchRouter.back]
             )}
-          />
-        </div>
-        <div
-          className={classnames(
-            ['arrow-wrapper', 'right-wrapper', 'disabled-wrapper'],
-            [true, true, !isSwitchRouter.forward]
-          )}
-          onClick={forward}
-        >
+            onClick={back}
+          >
+            <div
+              className={classnames(
+                ['arrow', 'arrow-left', 'disabled-arrow'],
+                [true, true, !isSwitchRouter.back]
+              )}
+            />
+          </div>
           <div
             className={classnames(
-              ['arrow', 'arrow-right', 'disabled-arrow'],
+              ['arrow-wrapper', 'right-wrapper', 'disabled-wrapper'],
               [true, true, !isSwitchRouter.forward]
             )}
-          />
+            onClick={forward}
+          >
+            <div
+              className={classnames(
+                ['arrow', 'arrow-right', 'disabled-arrow'],
+                [true, true, !isSwitchRouter.forward]
+              )}
+            />
+          </div>
         </div>
+      </div>
+      <div className="right">
+        <TabsComponent list={list} />
       </div>
     </HeaderWrapper>
   );
