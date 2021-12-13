@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { TabsWrapper } from './style';
-import { ITabsProps } from './index.d';
+import { ITabsProps } from './index.type';
 import { classnames } from '../../utils';
 
 const Tabs: React.FC<ITabsProps> = (props) => {

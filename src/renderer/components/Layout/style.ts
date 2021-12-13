@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { ILayoutWrapper } from './index.d';
+import { ILayoutWrapper } from './index.type';
 
 export const LayoutWrapper = styled.div<ILayoutWrapper>`
   width: 100%;

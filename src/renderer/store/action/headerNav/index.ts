@@ -1,4 +1,5 @@
 import { createAction } from 'redux-actions';
+import { INavList } from '../../../common/type';
 
 export enum GetHeaderNavType {
   Set_CurrentMenu = 'Set_CurrentMenu',
@@ -6,7 +7,7 @@ export enum GetHeaderNavType {
   Set_NavList = 'Set_NavList',
 }
 
-export const hederNavActions = {
+export const headerNavActions = {
   setCurrentMenu: createAction(
     GetHeaderNavType.Set_CurrentMenu,
     (currentMenu: string) => {
@@ -19,7 +20,10 @@ export const hederNavActions = {
       return { currentSubMenu };
     }
   ),
-  setNavList: createAction(GetHeaderNavType.Set_NavList, (navList: string) => {
-    return { navList };
-  }),
+  setNavList: createAction(
+    GetHeaderNavType.Set_NavList,
+    (navList: INavList[]) => {
+      return { navList };
+    }
+  ),
 };

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ILayoutProps } from './index.d';
+import { ILayoutProps } from './index.type';
 import { LayoutWrapper } from './style';
 
 const Layout: React.FC<ILayoutProps> = ({

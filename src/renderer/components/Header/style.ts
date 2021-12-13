@@ -67,6 +67,13 @@ export const HeaderWrapper = styled.header`
   .nav {
     background-color: #f8f8f8;
     height: 100%;
+    flex-basis: 430px;
+    padding-left: 20px;
+  }
+
+  .system {
+    background-color: #f8f8f8;
+    height: 100%;
     flex: 1;
   }
 `;
