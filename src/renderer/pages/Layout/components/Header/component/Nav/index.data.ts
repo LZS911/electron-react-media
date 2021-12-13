@@ -1,4 +1,4 @@
-import { INavList } from '../../../../common/type';
+import { INavList } from '../../../../../../common/type';
 
 export const navList: INavList[] = [
   {

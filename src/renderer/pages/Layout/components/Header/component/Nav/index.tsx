@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLocation } from 'react-router';
-import { TabsComponent } from '../../..';
+import { TabsComponent } from '../../../../../../components';
 import { navList } from './index.data';
 
 const Nav: React.FC = () => {

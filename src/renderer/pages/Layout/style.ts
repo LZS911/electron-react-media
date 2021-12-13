@@ -1,9 +1,8 @@
 import styled from 'styled-components';
-import { ILayoutWrapper } from './index.type';
 
-export const LayoutWrapper = styled.div<ILayoutWrapper>`
+export const LayoutWrapper = styled.div`
   width: 100%;
-  height: ${(props) => `calc(100% - ${props.footerHeight}px)`};
+  height: calc(100% - 60px);
   .header {
     width: 100%;
   }

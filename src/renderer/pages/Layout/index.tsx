@@ -1,16 +1,12 @@
 import * as React from 'react';
-import { ILayoutProps } from './index.type';
+import Header from './components/Header';
+import Sider from './components/Sider';
 import { LayoutWrapper } from './style';
 
-const Layout: React.FC<ILayoutProps> = ({
-  Header,
-  Sider,
-  Content,
-  footerHeight = 60,
-}) => {
+const Layout: React.FC = ({ children }) => {
   return (
     <>
-      <LayoutWrapper footerHeight={footerHeight}>
+      <LayoutWrapper>
         <div className="header">
           <Header />
         </div>
@@ -18,9 +14,7 @@ const Layout: React.FC<ILayoutProps> = ({
           <div className="sider">
             <Sider />
           </div>
-          <div className="content">
-            <Content />
-          </div>
+          <div className="content">{children}</div>
         </div>
       </LayoutWrapper>
     </>

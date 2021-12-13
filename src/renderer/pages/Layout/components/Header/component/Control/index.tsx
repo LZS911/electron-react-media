@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLocation } from 'react-router';
-import { classnames } from '../../../../utils';
+import { classnames } from '../../../../../../utils';
 
 const { ipcRenderer } = window.electronAPI;
 
