@@ -9,8 +9,13 @@ export const TabsWrapper = styled.div`
     color: #6e6e6e;
     font-size: 14px;
     cursor: pointer;
+    cursor: default;
+    &:hover {
+      color: #000;
+    }
   }
   .tab-item-active {
     color: #000;
+    font-weight: bold;
   }
 `;

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const LayoutWrapper = styled.div`
   width: 100%;
-  height: calc(100% - 60px);
+  height: calc(100% - 110px);
   .header {
     width: 100%;
   }

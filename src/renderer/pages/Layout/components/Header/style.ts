@@ -1,14 +1,5 @@
 import styled from 'styled-components';
 
-export const ButtonWrapper = styled.button`
-  /* Adapt the colors based on primary prop */
-  font-size: 1em;
-  margin: 1em;
-  padding: 0.25em 1em;
-  border: 2px solid palevioletred;
-  border-radius: 3px;
-`;
-
 export const HeaderWrapper = styled.header`
   height: 50px;
   display: flex;
@@ -67,13 +58,37 @@ export const HeaderWrapper = styled.header`
   .nav {
     background-color: #f8f8f8;
     height: 100%;
-    flex-basis: 430px;
+    flex: 1;
     padding-left: 20px;
   }
 
   .system {
+    flex-basis: 348px;
     background-color: #f8f8f8;
     height: 100%;
-    flex: 1;
+    display: flex;
+    align-items: center;
+    .search-input {
+      display: flex;
+      align-items: center;
+      margin-left: 35px;
+      background-color: #ececec;
+      border-radius: 20px;
+      padding: 2px 4px;
+      cursor: text;
+      width: 145px;
+      justify-content: center;
+      input {
+        height: 100%;
+        outline: none;
+        border: none;
+        background-color: #ececec;
+        width: 100%;
+        ::placeholder {
+          opacity: 0.5;
+          font-size: 12px;
+        }
+      }
+    }
   }
 `;

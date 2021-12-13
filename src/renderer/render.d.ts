@@ -15,3 +15,11 @@ declare global {
     electronAPI: IElectronAPI;
   }
 }
+
+declare module '*.svg?component' {
+  export const ReactComponent: React.FunctionComponent<
+    React.SVGProps<SVGSVGElement> & { title?: string }
+  >;
+
+  export default ReactComponent;
+}
